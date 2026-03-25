@@ -144,7 +144,8 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </div>
         </div>
       </div>
-      <div class="btn-2" id="load-more">Cargar más</div>
+
+      <a href="#programas" class="btn-2" id="load-more">Cargar más</a>
     </main>
 
     <section id="aplicacion" class="app container">
@@ -174,7 +175,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
       <div class="footer-column">
         <h4>Producto</h4>
-        <a href="#">Programas</a>
+        <a href="#programas">Programas</a>
         <a href="#">Test vocacional</a>
         <a href="#">Mentores</a>
       </div>
@@ -207,16 +208,14 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
       <p>© 2026 GrowUP. Todos los derechos reservados.</p>
 
     </div>
-
   </div>
 
 </footer>
 
-    <div id="login-panel">
+    <div id="login-overlay" aria-hidden="true"></div>
+
+    <div id="login-panel" aria-hidden="true">
       <div class="login-container">
-        <button id="close-login">
-          <img src="images/volver.svg" alt="" />
-        </button>
         <div class="login-form-box login">
           <div class="login-content">
             <h1>Iniciar Sesión</h1>
@@ -261,7 +260,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </div>
               <button type="submit" class="login-btn">Iniciar Sesión</button>
               <div class="login-forgot-link">
-                <a href="#">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="btn-forgot-password">¿Olvidaste tu contraseña?</a>
               </div>
             </form>
 
@@ -330,6 +329,33 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </div>
             </form>
           </div>
+
+          </div>
+
+        <div class="login-form-box recover">
+          <div class="login-content">
+            <h3>Recuperar contraseña</h3>
+            <p>
+              Ingresa el correo electrónico asociado a tu cuenta.
+            </p>
+            <form id="recover-form">
+              <div class="login-input-box">
+                <input
+                  type="email"
+                  name="recoveryEmail"
+                  placeholder="Correo electrónico"
+                  required
+                />
+              </div>
+              <button type="submit" class="login-btn">Enviar enlace</button>
+              <div class="login-link">
+                <a href="#" id="btn-back-login">Volver a iniciar sesión</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
         </div>
       </div>
     </div>
