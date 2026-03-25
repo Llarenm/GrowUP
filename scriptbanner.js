@@ -83,33 +83,64 @@ if (loadMoreBtn) {
 // LOGIN PANEL
 const openLogin = document.getElementById("btn-login-register");
 const loginPanel = document.getElementById("login-panel");
-const closeLogin = document.getElementById("close-login");
+const loginOverlay = document.getElementById("login-overlay");
 
 const loginContainer = document.querySelector(".login-container");
 const registerBtn = document.getElementById("btn-register");
 const loginBtn = document.getElementById("btn-login");
+const forgotPasswordBtn = document.getElementById("btn-forgot-password");
+const backLoginBtn = document.getElementById("btn-back-login");
+const recoverForm = document.getElementById("recover-form");
+
+const closeLoginPanel = () => {
+  loginPanel.classList.remove("active");
+  loginOverlay.classList.remove("active");
+  loginPanel.setAttribute("aria-hidden", "true");
+  loginContainer.classList.remove("active");
+  loginContainer.classList.remove("recover-active");
+};
 
 // Abrir panel
 openLogin.addEventListener("click", () => {
   loginPanel.classList.add("active");
+  loginOverlay.classList.add("active");
+  loginPanel.setAttribute("aria-hidden", "false");
 });
 
-// Cerrar panel
-closeLogin.addEventListener("click", () => {
-  loginPanel.classList.remove("active");
-  loginContainer.classList.remove("active");
+// Cerrar al hacer click fuera del panel
+loginOverlay.addEventListener("click", () => {
+  closeLoginPanel();
 });
 
 // Ir a registro
 registerBtn.addEventListener("click", () => {
+  loginContainer.classList.remove("recover-active");
   loginContainer.classList.add("active");
 });
 
 // Volver a login
 loginBtn.addEventListener("click", () => {
   loginContainer.classList.remove("active");
+  loginContainer.classList.remove("recover-active");
 });
 
-document.querySelector(".login-btn").addEventListener("click", function(){
-this.textContent = "Cargando...";
+forgotPasswordBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  loginContainer.classList.remove("active");
+  loginContainer.classList.add("recover-active");
+});
+
+backLoginBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  loginContainer.classList.remove("recover-active");
+});
+
+recoverForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const recoveryEmail = recoverForm.querySelector('input[name="recoveryEmail"]');
+  alert(
+    `Si el correo ${recoveryEmail.value.trim()} está registrado, recibirás un enlace de recuperación.`
+  );
+  recoverForm.reset();
+  loginContainer.classList.remove("recover-active");
 });
