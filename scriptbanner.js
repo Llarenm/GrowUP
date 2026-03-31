@@ -24,7 +24,7 @@ const demoUsers = [
   },
 ];
 
-//VALIDACIÓN DE USUARIOS
+//VALIDACIÓN DE USUARIOS EN EL INICIO SE SESIÓN
 
 const loginForm = document.querySelector(".login-form-box.login form");
 
@@ -48,7 +48,7 @@ loginForm.addEventListener("submit", (e) => {
     (user) =>
       user.role === userType &&
       user.document === documentValue &&
-      user.password === passwordValue
+      user.password === passwordValue,
   );
 
   if (!userFound) {
@@ -60,7 +60,7 @@ loginForm.addEventListener("submit", (e) => {
   window.location.href = userFound.redirect;
 });
 
-// BANNER - CARGAR MÁS
+// BANNER - CARGAR MÁS INFORMACIÓN DE LOS PROGRAMAS DE FORMACIÓN
 const loadMoreBtn = document.querySelector("#load-more");
 let currentItem = 4;
 
@@ -137,9 +137,11 @@ backLoginBtn.addEventListener("click", (event) => {
 
 recoverForm.addEventListener("submit", (event) => {
   event.preventDefault();
-  const recoveryEmail = recoverForm.querySelector('input[name="recoveryEmail"]');
+  const recoveryEmail = recoverForm.querySelector(
+    'input[name="recoveryEmail"]',
+  );
   alert(
-    `Si el correo ${recoveryEmail.value.trim()} está registrado, recibirás un enlace de recuperación.`
+    `Si el correo ${recoveryEmail.value.trim()} está registrado, recibirás un enlace de recuperación.`,
   );
   recoverForm.reset();
   loginContainer.classList.remove("recover-active");
