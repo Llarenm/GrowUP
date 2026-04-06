@@ -1,4 +1,7 @@
 // USUARIOS FICTICIOS POR ROL
+export function initBanner() {
+  console.log("Banner iniciado");
+}
 
 const demoUsers = [
   {

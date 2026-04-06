@@ -1,3 +1,7 @@
+export function initDashboard() {
+  console.log("Dashboard iniciado");
+}
+
 const container = document.querySelector(".container");
 const registerBtn = document.querySelector(".register-btn");
 const loginBtn = document.querySelector(".login-btn");
@@ -14,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.querySelector(".logout-btn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     });
   }
 
@@ -39,7 +43,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const logoutBtn = document.querySelector(".logout-btn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", () => {
-      window.location.href = "index.html";
+      window.location.href = "../index.html";
     });
   }
 
