@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GrowUP</title>
     <link rel="stylesheet" href="css/banner.css" />
-            <link rel="icon" href="assets/images/LogoGrowUP-sf.svg"/>
-  </head>
+    <link rel="icon" href="assets/images/LogoGrowUP-sf.svg" />  </head>
   <body>
     <header class="header">
       <!--Barra superior-->
@@ -21,6 +20,12 @@
 
           <input type="checkbox" id="menu" />
 
+          <input
+            type="checkbox"
+            id="menu"
+            aria-label="Abrir menú de navegación"
+          />
+
           <nav class="navbar">
             <ul>
               <li><a href="#" class="active">Inicio</a></li>
@@ -31,18 +36,30 @@
           </nav>
 
           <div class="menu-actions">
-          <!--Menú-->
-          <label for="menu">
-            <img src="assets/images/menu.svg" class="menu-icono" />
-          </label>
-                    <!--Boton para acceder-->
-              <button id="btn-login-register" class="login-register-btn secundary" >Acceder</button>
+             <!--Menú-->
+            <label for="menu">
+              <img
+                src="assets/images/menu.svg"
+                class="menu-icono"
+                alt="Abrir menú"
+              />
+            </label>
+            <!--Boton para acceder-->
+            <button
+              id="btn-login-register"
+              class="login-register-btn secundary"
+            >
+              Acceder
+            </button>
           </div>
         </div>
+      </div>
+    </header>
+
         <!--Contenido del header, contenido principal-->
         <div class="header-content container">
           <div class="header-txt">
-            <h1><span>Descubre tu vocación <br>
+            <h1><span>Descubre tu vocación <br/>
             </span>Construye tu futuro</h1><p>
               Encuentra tu camino profesional con nuestros tests guiados</p>
             <a href="#" class="btn-1">Descubrir más</a>
@@ -52,16 +69,18 @@
           </div>
         </div>
       </div>
-      
-    </header>
 
-    <main id="programas" class="programs container">
-      <h2>Programas</h2>
-      <p>
-      </p>
+    <main
+      id="programas"
+      class="programs container"
+      aria-labelledby="programas-title"
+    >
+      <h2 id="programas-title">Programas</h2>
+      <p></p>
+
       <div class="box-container" id="lista-1">
         <div class="box">
-          <img src="assets/images/pro1.svg" alt="" />
+          <img src="assets/images/pro1.svg" alt="programa 1" />
           <div class="programs-txt">
             <h3>Programa 1</h3>
             <p>
@@ -72,7 +91,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro2.svg" alt="" />
+          <img src="assets/images/pro2.svg" alt="programa 2" />
           <div class="programs-txt">
             <h3>Programa 2</h3>
             <p>
@@ -83,7 +102,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro3.svg" alt="" />
+          <img src="assets/images/pro3.svg" alt="programa 3" />
           <div class="programs-txt">
             <h3>Programa 3</h3>
             <p>
@@ -94,7 +113,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro4.svg" alt="" />
+          <img src="assets/images/pro4.svg" alt="programa 4" />
           <div class="programs-txt">
             <h3>Programa 4</h3>
             <p>
@@ -105,7 +124,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro5.svg" alt="" />
+          <img src="assets/images/pro5.svg" alt="programa 5" />
           <div class="programs-txt">
             <h3>Programa 5</h3>
             <p>
@@ -116,7 +135,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro6.svg" alt="" />
+          <img src="assets/images/pro6.svg" alt="programa 6" />
           <div class="programs-txt">
             <h3>Programa 6</h3>
             <p>
@@ -127,7 +146,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro2.svg" alt="" />
+          <img src="assets/images/pro2.svg" alt="programa 7" />
           <div class="programs-txt">
             <h3>Programa 7</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -136,7 +155,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         </div>
 
         <div class="box">
-          <img src="assets/images/pro4.svg" alt="" />
+          <img src="assets/images/pro4.svg" alt="programa 8" />
           <div class="programs-txt">
             <h3>Programa 8</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
@@ -150,14 +169,14 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
 
     <section id="aplicacion" class="app container">
       <div class="app-txt">
-        <h2>Descarga nuestra app</h2>
+        <h2 id="app-title">Descarga nuestra app</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit.
           impedit!
         </p>
         <div class="descarga">
-          <img src="assets/images/store1.png" alt="" />
-          <img src="assets/images/store2.png" alt="" />
+          <img src="assets/images/store1.png" alt="Decargar en App store" />
+          <img src="assets/images/store2.png" alt="Descargar en Google Play" />
         </div>
       </div>
     </section>
@@ -192,24 +211,29 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         <a href="#">Privacidad</a>
         <a href="#">Términos</a>
       </div>
-
     </div>
 
-    <div class="footer-bottom">
-
-      <div class="social-icons">
-        <img src="assets/images/facebook.png">
-        <img src="assets/images/linkedin.png">
-        <img src="assets/images/twitter.png">
-        <img src="assets/images/instagram.png">
-        <img src="assets/images/youtube.png">
-      </div>
-
+        <div class="footer-bottom">
+          <div class="social-icons" aria-label="Redes sociales">
+            <a href="#" aria-label="Facebook"
+              ><img src="assets/images/facebook.png" alt="Facebook"
+            /></a>
+            <a href="#" aria-label="LinkedIn"
+              ><img src="assets/images/linkedin.png" alt="LinkedIn"
+            /></a>
+            <a href="#" aria-label="Twitter"
+              ><img src="assets/images/twitter.png" alt="Twitter"
+            /></a>
+            <a href="#" aria-label="Instagram"
+              ><img src="assets/images/instagram.png" alt="Instagram"
+            /></a>
+            <a href="#" aria-label="YouTube"
+              ><img src="assets/images/youtube.png" alt="YouTube"
+            /></a>
+          </div>
       <p>© 2026 GrowUP. Todos los derechos reservados.</p>
-
     </div>
   </div>
-
 </footer>
 
     <div id="login-overlay" aria-hidden="true"></div>
@@ -278,10 +302,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
             <h1>Registrarse</h1>
             <form>
               <div class="login-input-box">
-                <label for="tipoUsuarioRegister"></label>
                 <select
-                  id="tipoUsuario"
-                  name="tipoUsuario"
+                  id="tipoUsuarioRegister"
+                  name="tipoUsuarioRegister"
                   class="input-field"
                   required
                 >
@@ -294,10 +317,9 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 </select>
               </div>
               <div class="login-input-box">
-                <label for="tipoDocumentoRegister"></label>
                 <select
-                  id="tipoDocumento"
-                  name="tipoDocumento"
+                  id="tipoDocumentoRegister"
+                  name="tipoDocumentoRegister"
                   class="custom-select"
                   required
                 >
@@ -329,15 +351,13 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </div>
             </form>
           </div>
-
-          </div>
+        </div>
 
         <div class="login-form-box recover">
           <div class="login-content">
             <h3>Recuperar contraseña</h3>
             <p>
-              Ingresa el correo electrónico asociado a tu cuenta.
-            </p>
+              Ingresa el correo electrónico asociado a tu cuenta.</p>
             <form id="recover-form">
               <div class="login-input-box">
                 <input
@@ -353,9 +373,6 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
               </div>
             </form>
           </div>
-        </div>
-      </div>
-    </div>
         </div>
       </div>
     </div>

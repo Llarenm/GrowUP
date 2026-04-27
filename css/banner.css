@@ -1,5 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
+:root {
+  --color-primary: #4daf50;
+  --color-primary-dark: #3a973d;
+  --color-accent: #0d4e73;
+  --color-text: #1d1d1b;
+  --color-muted: #5e5e5e;
+  --color-surface: #ffffff;
+  --color-page: #f3f3f3;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -23,10 +33,12 @@ body {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.6;
-  background-color: #f3f3f3;
+  background-color: var(--color-page);
+  color: var(--color-text);
 }
 
 .navbar {
+  max-height: 70px;
   width: 100%;
   background: #fff;
   padding: 20px 30px;
@@ -37,10 +49,11 @@ body {
 }
 
 .header {
+  min-height: 2vh;
   display: flex;
   align-items: center;
-  min-height: 72vh;
   position: relative;
+  padding-bottom: 20px;
 }
 
 .header-top {
@@ -61,8 +74,10 @@ body {
 
 .menu.container {
   background-color: #fafafa;
+  background-color: var(--color-surface);
   max-width: 1480px;
-  max-height: 80px;
+  max-height: 70px;
+  box-shadow: 0 6px 24px rgba(15, 23, 42, 0.06);
 }
 
 .brand {
@@ -95,7 +110,7 @@ body {
 }
 
 .login-register-btn.secundary:hover {
-  background: #0d4e73;
+  background: var(--color-accent);
 }
 
 .btn-login:hover {
@@ -109,9 +124,10 @@ body {
 }
 
 .navbar a.active {
-  color: #4daf50;
+  color: var(--color-primary);
+  font-size: 16px;
   font-weight: 600;
-  border-bottom: 2px solid #4daf50;
+  border-bottom: 2px solid var(--color-primary);
   padding-bottom: 4px;
 }
 
@@ -136,7 +152,7 @@ body {
   bottom: 0;
   width: 0;
   height: 2px;
-  background: #4daf50;
+  background: var(--color-primary);
   transition: all 0.3s ease;
   transform: translateX(-50%);
 }
@@ -145,7 +161,15 @@ body {
   width: 100%;
 }
 .menu .navbar ul li a:hover {
-  color: #4daf50;
+  color: var(--color-primary);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid rgba(77, 175, 80, 0.45);
+  outline-offset: 2px;
 }
 
 #menu {
@@ -185,13 +209,12 @@ td {
   font-size: 60px;
   font-weight: 700;
   line-height: 1.2;
-  color: #1d1d1b;
-}
+  color: var(--color-text);}
 
 .header-txt p {
   margin-top: 20px;
   font-size: 18px;
-  color: #5e5e5e;
+  color: var(--color-muted);
   margin-bottom: 20px;
 }
 
@@ -216,7 +239,7 @@ td {
   display: inline-block;
   padding: 10px 20px;
   border-radius: 15px;
-  background-color: #4daf50;
+  background-color: var(--color-primary);
   font-size: 16px;
   font-weight: 600;
   color: #f9fafb;
@@ -224,7 +247,7 @@ td {
 }
 
 .btn-1:hover {
-  background-color: #0d4e73;
+  background-color: var(--color-accent);
 }
 
 .info-img {
@@ -241,18 +264,18 @@ td {
 h2 {
   font-size: 38px;
   font-weight: 600;
-  color: #1d1d1b;
+  color: var(--color-text);
   margin-bottom: 25px;
 }
 
 p {
   font-size: 18px;
-  color: #5e5e5e;
+  color: var(--color-muted);
   margin-bottom: 20px;
 }
 
 .programs {
-  padding: 0 0 50px 0;
+  padding: 20px 0 60px 0;
   text-align: center;
 }
 
@@ -270,7 +293,8 @@ p {
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   display: none;
   transition: all 0.25s ease;
-  background-color: #f6f6f6;
+  background-color: var(--color-surface);
+  border: 1px solid #e5e7eb;
 }
 
 .box:hover {
@@ -314,7 +338,7 @@ p {
   width: fit-content;
   max-width: max-content;
   padding: 10px 20px;
-  background-color: #4daf50;
+  background-color: var(--color-primary);
   color: #f9fafb;
   border-radius: 15px;
   font-weight: 600;
@@ -323,7 +347,7 @@ p {
 }
 
 .btn-2:hover {
-  background-color: #0d4e73;
+  background-color: var(--color-accent);
 }
 
 .btn-3 {
@@ -333,13 +357,13 @@ p {
   width: fit-content;
   max-width: max-content;
   padding: 10px 20px;
-  background-color: #3a973d;
+  background-color: var(--color-primary-dark);
   color: #f9fafb;
   border-radius: 15px;
 }
 
 .btn-3:hover {
-  background-color: #0d4e73;
+  background-color: var(--color-accent);
 }
 
 .app {
@@ -410,9 +434,23 @@ p {
   align-items: center;
 }
 
+.social-icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-2px);
+}
+
 @media (max-width: 990px) {
   .header {
-    min-height: 60vh;
+    min-height: 2vh;
   }
   .menu {
     display: flex;
@@ -420,6 +458,7 @@ p {
     justify-content: space-between;
     position: relative;
     gap: 12px;
+
   }
 
   .menu label {
