@@ -36,7 +36,7 @@ Base de datos:
 MySQL conectada mediante JPA (uso interno de JDBC)
 
 Repositorio:
-LINK:
+LINK: https://github.com/Llarenm/GrowUP.git
 
 El repositorio contiene dos módulos:
 
