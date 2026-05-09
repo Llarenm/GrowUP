@@ -156,7 +156,7 @@ src/main/java/com/growup/gestionestudiantes
 
 # Repositorio
 
-LINK:
+LINK: https://github.com/Llarenm/GrowUP.git
 
 ------------------------------------------------------------
 
@@ -181,7 +181,7 @@ Ambos módulos forman parte del sistema GrowUP.
 
 ------------------------------------------------------------
 
-# Evidencias visuales recomendadas
+# Evidencias visuales
 
 - Captura de estructura MVC del proyecto
 - Consola Spring Boot iniciada correctamente
