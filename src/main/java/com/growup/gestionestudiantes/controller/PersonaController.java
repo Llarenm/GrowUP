@@ -3,6 +3,7 @@ package com.growup.gestionestudiantes.controller;
 import com.growup.gestionestudiantes.model.Persona;
 import com.growup.gestionestudiantes.service.PersonaService;
 import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class PersonaController {
 
     // CREATE
     @PostMapping
-    public Persona crear(@RequestBody Persona persona) {
+    public Persona crear(@Valid @RequestBody Persona persona) {
         return service.crearPersona(persona);
     }
 
@@ -36,7 +37,7 @@ public class PersonaController {
 
     // UPDATE
     @PutMapping
-    public Persona actualizar(@RequestBody Persona persona) {
+    public Persona actualizar(@Valid @RequestBody Persona persona) {
         return service.actualizarPersona(persona);
     }
 
