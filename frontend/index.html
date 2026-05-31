@@ -243,48 +243,26 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         <div class="login-form-box login">
           <div class="login-content">
             <h1>Iniciar Sesión</h1>
-            <form action="">
+            <form id="loginForm">
               <div class="login-input-box">
-                <select
-                  id="tipoUsuario"
-                  name="tipoUsuario"
-                  class="input-field"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecciona tipo de usuario
-                  </option>
-                  <option value="st">Estudiante</option>
-                  <option value="men">Mentor</option>
-                  <option value="coor">Coordinador</option>
-                </select>
+                <input
+                type="email"
+                id="loginEmail"
+                name="loginEmail"
+                placeholder="Correo electrónico"
+                required />
               </div>
               <div class="login-input-box">
-                <label for="tipoDocumento"></label>
-                <select
-                  id="tipoDocumento"
-                  name="tipoDocumento"
-                  class="custom-select"
-                  required
-                >
-                  <option value="" disabled selected>
-                    Selecciona tipo de documento
-                  </option>
-                  <option value="cc">Cédula de Ciudadanía</option>
-                  <option value="ce">Cédula de Extranjería</option>
-                  <option value="ti">Tarjeta de Identidad</option>
-                  <option value="ppt">Permiso por Protección Temporal</option>
-                </select>
-              </div>
-              <div class="login-input-box">
-                <input type="text" placeholder="Numero de documento" required />
-              </div>
-              <div class="login-input-box">
-                <input type="password" placeholder="Contraseña" required />
+                <input
+                type="password"
+                id="loginPassword"
+                name="loginPassword"
+                placeholder="Contraseña"
+                required />
               </div>
               <button type="submit" class="login-btn">Iniciar Sesión</button>
               <div class="login-forgot-link">
-                <a href="#" id="btn-forgot-password">¿Olvidaste tu contraseña?</a>
+                <a href="#" id="btn-forgot-">¿Olvidaste tu contraseña?</a>
               </div>
             </form>
 
@@ -300,7 +278,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
         <div class="login-form-box register">
           <div class="login-content">
             <h1>Registrarse</h1>
-            <form>
+            <form id="registerForm">
               <div class="login-input-box">
                 <select
                   id="tipoUsuarioRegister"
@@ -311,41 +289,81 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   <option value="" disabled selected>
                     Selecciona tipo de usuario
                   </option>
-                  <option value="st">Estudiante</option>
-                  <option value="men">Mentor</option>
-                  <option value="coor">Coordinador</option>
+                  <option value="ESTUDIANTE">Estudiante</option>
+                  <option value="MENTOR">Mentor</option>
+                  <option value="COORDINADOR">Coordinador</option>
                 </select>
               </div>
               <div class="login-input-box">
                 <select
-                  id="tipoDocumentoRegister"
-                  name="tipoDocumentoRegister"
+                  id="tipoIdentificacionRegister"
+                  name="tipoIdentificacionRegister"
                   class="custom-select"
                   required
                 >
                   <option value="" disabled selected>
-                    Selecciona tipo de documento
+                    Seleccione tipo de identificación
                   </option>
-                  <option value="cc">Cédula de Ciudadanía</option>
-                  <option value="ce">Cédula de Extranjería</option>
-                  <option value="ti">Tarjeta de Identidad</option>
-                  <option value="ppt">Permiso por Protección Temporal</option>
+                  <option value="CC">Cédula de Ciudadanía</option>
+                  <option value="CE">Cédula de Extranjería</option>
+                  <option value="TI">Tarjeta de Identidad</option>
+                  <option value="PPT">Permiso por Protección Temporal</option>
                 </select>
               </div>
               <div class="login-input-box">
-                <input type="text" placeholder="Número decumento" required />
+                <input 
+                type="text" 
+                id="numeroIdentificacion"
+                name="numeroIdentificacion"
+                placeholder="Número identificación" 
+                required />
               </div>
               <div class="login-input-box">
-                <input type="email" placeholder="Correo electrónico" required />
+                <input 
+                type="text"
+                id="nombres"
+                name="nombres"
+                placeholder="Nombres"
+                required />
               </div>
               <div class="login-input-box">
-                <input type="password" placeholder="Contraseña" required />
+                <input 
+                type="text"
+                id="apellidos"
+                name="apellidos"
+                placeholder="Apellidos"
+                required />
+              </div>
+              <div class="login-input-box">
+                <input 
+                type="date"
+                id="fechaNacimiento"
+                name="fechaNacimiento"
+                placeholder="Fecha Nacimiento"
+                required />
+              </div>
+              
+              <div class="login-input-box">
+                <input 
+                type="email"
+                id="registerEmail"
+                name="email"
+                placeholder="Correo electrónico" 
+                required />
+              </div>
+              <div class="login-input-box">
+                <input 
+                type="password" 
+                id="registerPassword"
+                name="password"
+                placeholder="Contraseña" 
+                required />
               </div>
               <button type="submit" class="login-btn">Registrarse</button>
 
               <div class="bottom-register">
                 <p>¿Ya tienes una cuenta?</p>
-                <button id="btn-login" class="login-btn secondary">
+                <button type="button" id="btn-login" class="login-btn secondary">
                   Iniciar sesión
                 </button>
               </div>
@@ -362,6 +380,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.
               <div class="login-input-box">
                 <input
                   type="email"
+                  id="recoveryEmail"
                   name="recoveryEmail"
                   placeholder="Correo electrónico"
                   required

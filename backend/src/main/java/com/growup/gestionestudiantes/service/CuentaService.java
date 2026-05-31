@@ -3,6 +3,7 @@ package com.growup.gestionestudiantes.service;
 import com.growup.gestionestudiantes.model.Cuenta;
 import com.growup.gestionestudiantes.repository.CuentaRepository;
 import org.springframework.stereotype.Service;
+import com.growup.gestionestudiantes.dto.LoginDTO;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,7 +38,22 @@ public class CuentaService {
     }
 
     // LOGIN
-    public Optional<Cuenta> login(String email) {
-        return repo.findByEmail(email);
+    public Cuenta login(LoginDTO loginDTO) {
+
+        Optional<Cuenta> cuentaOpt =
+                repo.findByEmail(loginDTO.getEmail());
+
+        if (cuentaOpt.isEmpty()) {
+            return null;
+        }
+
+        Cuenta cuenta = cuentaOpt.get();
+
+        if (!cuenta.getContrasena()
+                .equals(loginDTO.getContrasena())) {
+            return null;
+        }
+
+        return cuenta;
     }
 }

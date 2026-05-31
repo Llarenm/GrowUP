@@ -1,67 +1,200 @@
-// USUARIOS FICTICIOS POR ROL
 export function initBanner() {
   console.log("Banner iniciado");
 }
 
-const demoUsers = [
-  {
-    role: "st",
-    document: 1001,
-    password: "estudiante1001",
-    name: "Alex Estudiante",
-    redirect: "panel_estudiante.html",
-  },
-  {
-    role: "men",
-    document: 2001,
-    password: "mentor2001",
-    name: "Belen Mentor",
-    redirect: "panel_mentor.html",
-  },
-  {
-    role: "coor",
-    document: 3001,
-    password: "coordinado3001",
-    name: "Carla Coordinador",
-    redirect: "panel_coordinador.html",
-  },
-];
-
 //VALIDACIÓN DE USUARIOS EN EL INICIO SE SESIÓN
 
-const loginForm = document.querySelector(".login-form-box.login form");
+const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const userType = loginForm.querySelector('select[name="tipoUsuario"]').value;
+loginForm.addEventListener("submit", async (e) => {
 
-  const documentValue = loginForm
-    .querySelector('input[type="text"]')
-    .value.trim();
-  const passwordValue = loginForm
-    .querySelector('input[type="password"]')
-    .value.trim();
+    e.preventDefault();
 
-  if (!userType || !documentValue || !passwordValue) {
-    alert("Completa todos los campos");
-    return;
-  }
+    try {
 
-  const userFound = demoUsers.find(
-    (user) =>
-      user.role === userType &&
-      user.document === documentValue &&
-      user.password === passwordValue,
-  );
+        const email =
+            document.getElementById("loginEmail").value.trim();
 
-  if (!userFound) {
-    alert("Credenciales incorrectas");
-    return;
-  }
+        const contrasena =
+            document.getElementById("loginPassword").value.trim();
 
-  alert(`Bienvenido ${userFound.name}`);
-  window.location.href = userFound.redirect;
+        const loginData = {
+            email,
+            contrasena
+        };
+
+        const response = await fetch(
+            "http://localhost:8081/cuenta/login",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(loginData)
+            }
+        );
+
+        if (!response.ok) {
+
+            alert("Credenciales incorrectas");
+
+            return;
+        }
+
+        const cuenta = await response.json();
+
+console.log("Login correcto:", cuenta);
+
+// Redirigir según el rol del usuario autenticado
+
+switch (cuenta.rol) {
+
+    case "ESTUDIANTE":
+    window.location.href = "./pages/panel_estudiante.html";
+    break;
+
+case "MENTOR":
+    window.location.href = "./pages/panel_mentor.html";
+    break;
+
+case "COORDINADOR":
+    window.location.href = "./pages/panel_coordinador.html";
+    break;
+
+    default:
+        alert("Rol no reconocido");
+}
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert("Error al iniciar sesión");
+    }
+
 });
+
+
+// REGISTRO USUARIOS
+
+const registerForm = document.getElementById("registerForm")
+registerForm.addEventListener("submit", async (e) => {
+
+   e.preventDefault();
+
+   try {
+
+const tipoUsuario =
+  document.getElementById("tipoUsuarioRegister").value;
+
+const tipoIdentificacion =
+  document.getElementById("tipoIdentificacionRegister").value;
+
+const numeroIdentificacion =
+   document.getElementById("numeroIdentificacion").value;
+
+const nombres =
+   document.getElementById("nombres").value;
+
+const apellidos =
+   document.getElementById("apellidos").value;
+
+const fechaNacimiento =
+   document.getElementById("fechaNacimiento").value;
+
+const email =
+  document.getElementById("registerEmail").value;
+
+const password =
+  document.getElementById("registerPassword").value;
+
+console.log("Email:", email);
+console.log("Password:", password);
+console.log("Tipo usuario:", tipoUsuario);
+
+//DATOS PERSONA
+
+const persona = {
+  tipoIdentificacion,
+  numeroIdentificacion,
+  fechaNacimiento,
+  nombres,
+  apellidos
+};
+
+// Enviar datos de registro al backend
+const personaResponse = await fetch("http://localhost:8081/personas", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(persona)
+});
+
+if (!personaResponse.ok) {
+
+   const errorData = await personaResponse.json();
+
+   alert(errorData.error);
+
+   return;
+}
+
+const personaData = await personaResponse.json();
+
+console.log("Persona creada:", personaData);
+
+//DATOS CUENTA
+
+const cuenta = {
+  email,
+  contrasena: password,
+  rol: tipoUsuario,
+  estado: "ACTIVA",
+  persona: {
+    id: personaData.id
+  }
+};
+
+console.log(JSON.stringify(cuenta, null, 2));
+console.log("Cuenta:", cuenta);
+
+const cuentaResponse = await fetch("http://localhost:8081/cuenta", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify(cuenta)
+});
+
+if (!cuentaResponse.ok) {
+
+   const errorData = await cuentaResponse.json();
+
+   alert(errorData.error);
+
+   return;
+}
+
+const cuentaData = await cuentaResponse.json();
+
+console.log("Cuenta creada:", cuentaData);
+
+alert("Usuario registrado correctamente");
+
+registerForm.reset();
+
+loginContainer.classList.remove("active");
+
+   } catch(error) {
+
+      console.error(error);
+      alert("Error al registrar usuario");
+
+   }
+
+});
+
 
 // BANNER - CARGAR MÁS INFORMACIÓN DE LOS PROGRAMAS DE FORMACIÓN
 const loadMoreBtn = document.querySelector("#load-more");

@@ -87,3 +87,4 @@ public class RegistroDTO {
         this.rol = rol;
     }
 }
+
