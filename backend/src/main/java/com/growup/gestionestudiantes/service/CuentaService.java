@@ -4,7 +4,7 @@ import com.growup.gestionestudiantes.model.Cuenta;
 import com.growup.gestionestudiantes.repository.CuentaRepository;
 import org.springframework.stereotype.Service;
 import com.growup.gestionestudiantes.dto.LoginDTO;
-
+import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,13 +12,16 @@ import java.util.Optional;
 public class CuentaService {
 
     private final CuentaRepository repo;
+    private final PasswordEncoder passwordEncoder;
 
-    public CuentaService(CuentaRepository repo) {
+    public CuentaService(CuentaRepository repo, PasswordEncoder passwordEncoder) {
         this.repo = repo;
+        this.passwordEncoder = passwordEncoder;
     }
 
     // CREATE
     public Cuenta registrarCuenta(Cuenta cuenta) {
+        cuenta.setContrasena(passwordEncoder.encode(cuenta.getContrasena()));
         return repo.save(cuenta);
     }
 
@@ -49,8 +52,7 @@ public class CuentaService {
 
         Cuenta cuenta = cuentaOpt.get();
 
-        if (!cuenta.getContrasena()
-                .equals(loginDTO.getContrasena())) {
+        if (!passwordEncoder.matches(loginDTO.getContrasena(), cuenta.getContrasena())) {
             return null;
         }
 
