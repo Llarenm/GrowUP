@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GrowUP/Encuesta inicial</title>
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/encuesta.css" />
+    <link rel="icon" href="../assets/images/LogoGrowUP-sf.svg" />
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <img src="../assets/images/LogoGrowUP-sf.svg" alt="GrowUP logo" />
+        <span class="brand-text">GrowUP /</span>
+        <h2>Encuesta inicial</h2>
+      </div>
+
+      <div class="menu-actions">
+        <div class="bottom-login-register">
+          <button class="logout-btn" type="button" onclick="location.href='panel_estudiante.html'">
+            Volver
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <main class="survey-page">
+      <section class="survey-hero" aria-labelledby="survey-title">
+        <div>
+          <p class="survey-kicker">Diagnostico vocacional</p>
+          <h1 id="survey-title">Encuesta inicial del estudiante</h1>
+          <p>
+            Responde con calma. Tus respuestas ayudaran a personalizar tu ruta formativa
+            dentro de GrowUP.
+          </p>
+        </div>
+
+        <div class="survey-progress" aria-label="Progreso del formulario">
+          <span id="progressText">0% completado</span>
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+      </section>
+
+      <form class="survey-form" id="studentSurvey">
+        <fieldset class="survey-section">
+          <legend>1. Datos generales</legend>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Nombre completo</span>
+              <input type="text" name="nombre" autocomplete="name" required />
+            </label>
+
+            <label class="field">
+              <span>Edad</span>
+              <input type="number" name="edad" min="8" max="25" required />
+            </label>
+
+            <label class="field">
+              <span>Curso/Grado</span>
+              <input type="text" name="curso" required />
+            </label>
+          </div>
+
+          <div class="question-group">
+            <p>Genero</p>
+            <div class="option-grid">
+              <label><input type="radio" name="genero" value="Femenino" required /> Femenino</label>
+              <label><input type="radio" name="genero" value="Masculino" /> Masculino</label>
+              <label><input type="radio" name="genero" value="Otro" /> Otro</label>
+              <label><input type="radio" name="genero" value="Prefiero no decirlo" /> Prefiero no decirlo</label>
+            </div>
+          </div>
+
+          <div class="question-group">
+            <p>Vives con...</p>
+            <div class="option-grid">
+              <label><input type="radio" name="convivencia" value="Ambos padres" required /> Ambos padres</label>
+              <label><input type="radio" name="convivencia" value="Solo uno de tus padres" /> Solo uno de tus padres</label>
+              <label><input type="radio" name="convivencia" value="Otro familiar" /> Otro familiar</label>
+              <label><input type="radio" name="convivencia" value="Otro" /> Otro</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>2. Intereses y vocacion</legend>
+          <p class="section-help">Cuales de estas areas te llaman mas la atencion? Puedes elegir hasta 3.</p>
+
+          <div class="option-grid option-grid-wide" data-limit-group="intereses" data-limit="3">
+            <label><input type="checkbox" name="intereses" value="Ciencia y tecnologia" /> Ciencia y tecnologia</label>
+            <label><input type="checkbox" name="intereses" value="Arte y diseno" /> Arte y diseno</label>
+            <label><input type="checkbox" name="intereses" value="Deportes" /> Deportes</label>
+            <label><input type="checkbox" name="intereses" value="Medicina y salud" /> Medicina y salud</label>
+            <label><input type="checkbox" name="intereses" value="Negocios y emprendimiento" /> Negocios y emprendimiento</label>
+            <label><input type="checkbox" name="intereses" value="Educacion" /> Educacion</label>
+            <label><input type="checkbox" name="intereses" value="Trabajo social y comunidad" /> Trabajo social y comunidad</label>
+            <label><input type="checkbox" name="intereses" value="No estoy seguro/a aun" /> No estoy seguro/a aun</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>3. Tiempo libre</legend>
+          <label class="field">
+            <span>Que actividades disfrutas hacer en tu tiempo libre?</span>
+            <textarea name="tiempoLibre" rows="4" required></textarea>
+          </label>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>4. Futuro academico o profesional</legend>
+
+          <div class="question-group">
+            <p>Tienes una idea de que te gustaria estudiar o ser en el futuro?</p>
+            <div class="inline-options">
+              <label><input type="radio" name="tieneIdeaFuturo" value="Si" required /> Si</label>
+              <label><input type="radio" name="tieneIdeaFuturo" value="No" /> No</label>
+            </div>
+          </div>
+
+          <label class="field" id="futureIdeaField">
+            <span>Si respondiste "Si", que te gustaria estudiar o ser?</span>
+            <input type="text" name="ideaFuturo" />
+          </label>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>5. Estilo de aprendizaje</legend>
+          <p class="section-help">Como aprendes mejor? Elige dos principales.</p>
+
+          <div class="option-grid option-grid-wide" data-limit-group="aprendizaje" data-limit="2">
+            <label><input type="checkbox" name="aprendizaje" value="Viendo videos o imagenes" /> Viendo videos o imagenes</label>
+            <label><input type="checkbox" name="aprendizaje" value="Escuchando explicaciones" /> Escuchando explicaciones</label>
+            <label><input type="checkbox" name="aprendizaje" value="Haciendo cosas con tus manos" /> Haciendo cosas con tus manos</label>
+            <label><input type="checkbox" name="aprendizaje" value="Leyendo y escribiendo" /> Leyendo y escribiendo</label>
+            <label><input type="checkbox" name="aprendizaje" value="En grupo o con otras personas" /> En grupo o con otras personas</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>6. Estado emocional y motivacion</legend>
+
+          <div class="question-group">
+            <p>Te sientes motivado/a por aprender en este momento?</p>
+            <div class="option-grid">
+              <label><input type="radio" name="motivacion" value="Mucho" required /> Mucho</label>
+              <label><input type="radio" name="motivacion" value="Algo" /> Algo</label>
+              <label><input type="radio" name="motivacion" value="Poco" /> Poco</label>
+              <label><input type="radio" name="motivacion" value="Nada" /> Nada</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>7. Estres o desanimo escolar</legend>
+
+          <div class="question-group">
+            <p>Con que frecuencia te sientes estresado/a o desanimado/a por el colegio?</p>
+            <div class="option-grid">
+              <label><input type="radio" name="estres" value="Casi nunca" required /> Casi nunca</label>
+              <label><input type="radio" name="estres" value="A veces" /> A veces</label>
+              <label><input type="radio" name="estres" value="Frecuentemente" /> Frecuentemente</label>
+              <label><input type="radio" name="estres" value="Siempre" /> Siempre</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>8. Apoyo</legend>
+
+          <div class="question-group">
+            <p>Sientes que alguien te apoya o te escucha cuando tienes un problema?</p>
+            <div class="option-grid">
+              <label><input type="radio" name="apoyo" value="Si" required /> Si</label>
+              <label><input type="radio" name="apoyo" value="No" /> No</label>
+              <label><input type="radio" name="apoyo" value="No estoy seguro/a" /> No estoy seguro/a</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset class="survey-section">
+          <legend>Auto evaluacion</legend>
+          <p class="section-help">Como te calificarias a ti mismo/a? 1 = muy bajo, 5 = muy alto.</p>
+
+          <div class="rating-list">
+            <div class="rating-row">
+              <span>Confianza en mi mismo/a</span>
+              <div class="rating-options" role="radiogroup" aria-label="Confianza en mi mismo/a">
+                <label><input type="radio" name="confianza" value="1" required /> 1</label>
+                <label><input type="radio" name="confianza" value="2" /> 2</label>
+                <label><input type="radio" name="confianza" value="3" /> 3</label>
+                <label><input type="radio" name="confianza" value="4" /> 4</label>
+                <label><input type="radio" name="confianza" value="5" /> 5</label>
+              </div>
+            </div>
+
+            <div class="rating-row">
+              <span>Responsabilidad con mis estudios</span>
+              <div class="rating-options" role="radiogroup" aria-label="Responsabilidad con mis estudios">
+                <label><input type="radio" name="responsabilidad" value="1" required /> 1</label>
+                <label><input type="radio" name="responsabilidad" value="2" /> 2</label>
+                <label><input type="radio" name="responsabilidad" value="3" /> 3</label>
+                <label><input type="radio" name="responsabilidad" value="4" /> 4</label>
+                <label><input type="radio" name="responsabilidad" value="5" /> 5</label>
+              </div>
+            </div>
+
+            <div class="rating-row">
+              <span>Capacidad para trabajar en equipo</span>
+              <div class="rating-options" role="radiogroup" aria-label="Capacidad para trabajar en equipo">
+                <label><input type="radio" name="equipo" value="1" required /> 1</label>
+                <label><input type="radio" name="equipo" value="2" /> 2</label>
+                <label><input type="radio" name="equipo" value="3" /> 3</label>
+                <label><input type="radio" name="equipo" value="4" /> 4</label>
+                <label><input type="radio" name="equipo" value="5" /> 5</label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="secondary-action" type="reset">Limpiar</button>
+          <button class="primary-action" type="submit">Enviar encuesta</button>
+        </div>
+
+        <p class="form-message" id="formMessage" role="status"></p>
+      </form>
+    </main>
+
+    <script src="../js/encuesta.js"></script>
+  </body>
+</html>
