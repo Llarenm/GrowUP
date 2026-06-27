@@ -31,7 +31,17 @@ public class GlobalExceptionHandler {
 
         Map<String, String> error = new HashMap<>();
 
-        error.put("error", "El número de identificación ya existe");
+        String mensaje = ex.getMostSpecificCause().getMessage();
+
+        if (mensaje != null && mensaje.contains("Email")) {
+            error.put("error", "El correo electrónico ya está registrado");
+        } else if (mensaje != null && mensaje.contains("numero_identificacion")) {
+            error.put("error", "El número de identificación ya existe");
+        } else if (mensaje != null && mensaje.contains("unique_persona_rol")) {
+            error.put("error", "Ya tienes una cuenta con ese rol");
+        } else {
+            error.put("error", "Error de integridad en los datos");
+        }
 
         return error;
     }
