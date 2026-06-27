@@ -2,6 +2,7 @@ package com.growup.gestionestudiantes.controller;
 
 import com.growup.gestionestudiantes.model.Persona;
 import com.growup.gestionestudiantes.service.PersonaService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 
@@ -34,6 +35,14 @@ public class PersonaController {
     @GetMapping("/{id}")
     public Persona obtenerPorId(@PathVariable Integer id) {
         return service.obtenerPorId(id).orElse(null);
+    }
+
+    // FIND BY NUMEROIDENTIFICACION
+    @GetMapping("/documento/{numeroIdentificacion}")
+    public ResponseEntity<Persona> buscarPorDocumento(@PathVariable String numeroIdentificacion) {
+        return service.buscarPorDocumento(numeroIdentificacion)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     // UPDATE

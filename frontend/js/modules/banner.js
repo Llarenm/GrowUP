@@ -122,27 +122,35 @@ const persona = {
   apellidos
 };
 
-// Enviar datos de registro al backend
-const personaResponse = await fetch("http://localhost:8081/personas", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(persona)
-});
+// BUSCAR SI YA EXISTE LA PERSONA
+const busquedaResponse = await fetch(
+    `http://localhost:8081/personas/documento/${numeroIdentificacion}`
+);
 
-if (!personaResponse.ok) {
+let personaData;
 
-   const errorData = await personaResponse.json();
+if (busquedaResponse.ok) {
+    // La persona ya existe, usamos sus datos
+    personaData = await busquedaResponse.json();
+    console.log("Persona existente encontrada:", personaData);
 
-   alert(errorData.error);
+} else {
+    // La persona no existe, la creamos
+    const personaResponse = await fetch("http://localhost:8081/personas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(persona)
+    });
 
-   return;
+    if (!personaResponse.ok) {
+        const errorData = await personaResponse.json();
+        alert(errorData.error);
+        return;
+    }
+
+    personaData = await personaResponse.json();
+    console.log("Persona creada:", personaData);
 }
-
-const personaData = await personaResponse.json();
-
-console.log("Persona creada:", personaData);
 
 //DATOS CUENTA
 

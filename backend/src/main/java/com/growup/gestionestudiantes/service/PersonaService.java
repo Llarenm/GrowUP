@@ -21,6 +21,11 @@ public class PersonaService {
         return repo.save(persona);
     }
 
+    // FIND
+    public Optional<Persona> buscarPorDocumento(String numeroIdentificacion) {
+        return repo.findByNumeroIdentificacion(numeroIdentificacion);
+    }
+
     // READ
     public List<Persona> obtenerPersonas() {
         return repo.findAll();
