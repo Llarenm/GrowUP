@@ -9,6 +9,9 @@ public class LoginDTO {
     public LoginDTO() {
     }
 
+    public LoginDTO(String mail, String number) {
+    }
+
     public String getEmail() {
         return email;
     }
