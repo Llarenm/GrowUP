@@ -112,97 +112,42 @@ console.log("Email:", email);
 console.log("Password:", password);
 console.log("Tipo usuario:", tipoUsuario);
 
-//DATOS PERSONA
-
-const persona = {
-  tipoIdentificacion,
-  numeroIdentificacion,
-  fechaNacimiento,
-  nombres,
-  apellidos
-};
-
-// BUSCAR SI YA EXISTE LA PERSONA
-const busquedaResponse = await fetch(
-    `http://localhost:8081/personas/documento/${numeroIdentificacion}`
-);
-
-let personaData;
-
-if (busquedaResponse.ok) {
-    // La persona ya existe, usamos sus datos
-    personaData = await busquedaResponse.json();
-    console.log("Persona existente encontrada:", personaData);
-
-} else {
-    // La persona no existe, la creamos
-    const personaResponse = await fetch("http://localhost:8081/personas", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(persona)
-    });
-
-    if (!personaResponse.ok) {
-        const errorData = await personaResponse.json();
-        alert(errorData.error);
-        return;
-    }
-
-    personaData = await personaResponse.json();
-    console.log("Persona creada:", personaData);
-}
-
 //DATOS CUENTA
 
-const cuenta = {
-  email,
-  contrasena: password,
-  rol: tipoUsuario,
-  estado: "ACTIVA",
-  persona: {
-    id: personaData.id
-  }
+const registroData = {
+    tipoIdentificacion,
+    numeroIdentificacion,
+    fechaNacimiento,
+    nombres,
+    apellidos,
+    email,
+    contrasena: password,
+    rol: tipoUsuario
 };
 
-console.log(JSON.stringify(cuenta, null, 2));
-console.log("Cuenta:", cuenta);
-
-const cuentaResponse = await fetch("http://localhost:8081/cuenta", {
+const registroResponse = await fetch("http://localhost:8081/registro", {
     method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(cuenta)
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(registroData)
 });
 
-if (!cuentaResponse.ok) {
-
-   const errorData = await cuentaResponse.json();
-
-   alert(errorData.error);
-
-   return;
+if (!registroResponse.ok) {
+    const errorData = await registroResponse.json();
+    alert(errorData.error);
+    return;
 }
 
-const cuentaData = await cuentaResponse.json();
-
-console.log("Cuenta creada:", cuentaData);
+const cuentaData = await registroResponse.json();
+console.log("Registro completado:", cuentaData);
 
 alert("Usuario registrado correctamente");
-
 registerForm.reset();
-
 loginContainer.classList.remove("active");
-
    } catch(error) {
-
       console.error(error);
       alert("Error al registrar usuario");
-
    }
-
 });
-
 
 // BANNER - CARGAR MÁS INFORMACIÓN DE LOS PROGRAMAS DE FORMACIÓN
 const loadMoreBtn = document.querySelector("#load-more");
