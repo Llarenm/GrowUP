@@ -27,7 +27,7 @@ public class Cuenta {
     @Enumerated(EnumType.STRING)
     private EstadoCuenta estado;
 
-    @Column(name = "Fecha_creación")
+    @Column(name = "Fecha_creacion")
     @CreationTimestamp
     private LocalDateTime fechaCreacion;
 
