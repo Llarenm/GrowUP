@@ -8,7 +8,8 @@ import jakarta.validation.Valid;
 
 import java.util.List;
 
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://visionary-froyo-2cc8b1.netlify.app"})@RestController
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://growupedu.netlify.app"})
+@RestController
 @RequestMapping("/personas")
 public class PersonaController {
 

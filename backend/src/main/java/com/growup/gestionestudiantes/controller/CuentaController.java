@@ -5,7 +5,7 @@ import com.growup.gestionestudiantes.model.Cuenta;
 import com.growup.gestionestudiantes.service.CuentaService;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://visionary-froyo-2cc8b1.netlify.app"})@RestController
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "https://growupedu.netlify.app"})
 @RequestMapping("/cuenta")
 public class CuentaController {
 

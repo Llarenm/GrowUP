@@ -213,11 +213,13 @@ loginBtn.addEventListener("click", () => {
   loginContainer.classList.remove("recover-active");
 });
 
-forgotPasswordBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  loginContainer.classList.remove("active");
-  loginContainer.classList.add("recover-active");
-});
+if (forgotPasswordBtn) {
+    forgotPasswordBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        loginContainer.classList.remove("active");
+        loginContainer.classList.add("recover-active");
+    });
+}
 
 backLoginBtn.addEventListener("click", (event) => {
   event.preventDefault();
