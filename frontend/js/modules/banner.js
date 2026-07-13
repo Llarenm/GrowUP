@@ -24,7 +24,7 @@ loginForm.addEventListener("submit", async (e) => {
         };
 
         const response = await fetch(
-            "http://localhost:8081/cuenta/login",
+            "https://growup-production-bd7f.up.railway.app/cuenta/login",
             {
                 method: "POST",
                 headers: {
@@ -125,7 +125,7 @@ const registroData = {
     rol: tipoUsuario
 };
 
-const registroResponse = await fetch("http://localhost:8081/registro", {
+const registroResponse = await fetch("https://growup-production-bd7f.up.railway.app/registro", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(registroData)
