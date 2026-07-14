@@ -62,6 +62,7 @@ case "COORDINADOR":
     }
 
 });
+}
 
 
 // REGISTRO USUARIOS
