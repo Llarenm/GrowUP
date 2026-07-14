@@ -6,42 +6,31 @@ export function initBanner() {
 
 const loginForm = document.getElementById("loginForm");
 
-loginForm.addEventListener("submit", async (e) => {
+if (loginForm) {
+    loginForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-    e.preventDefault();
+        try {
+            const email = document.getElementById("loginEmail").value.trim();
+            const contrasena = document.getElementById("loginPassword").value.trim();
 
-    try {
+            const loginData = { email, contrasena };
 
-        const email =
-            document.getElementById("loginEmail").value.trim();
+            const response = await fetch(
+                "https://growup-production-bd7f.up.railway.app/cuenta/login",
+                {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(loginData)
+                }
+            );
 
-        const contrasena =
-            document.getElementById("loginPassword").value.trim();
-
-        const loginData = {
-            email,
-            contrasena
-        };
-
-        const response = await fetch(
-            "https://growup-production-bd7f.up.railway.app/cuenta/login",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(loginData)
+            if (!response.ok) {
+                alert("Credenciales incorrectas");
+                return;
             }
-        );
 
-        if (!response.ok) {
-
-            alert("Credenciales incorrectas");
-
-            return;
-        }
-
-        const cuenta = await response.json();
+            const cuenta = await response.json();
 
 console.log("Login correcto:", cuenta);
 
@@ -77,7 +66,9 @@ case "COORDINADOR":
 
 // REGISTRO USUARIOS
 
-const registerForm = document.getElementById("registerForm")
+const registerForm = document.getElementById("registerForm");
+
+if (registerForm) {
 registerForm.addEventListener("submit", async (e) => {
 
    e.preventDefault();
@@ -147,7 +138,9 @@ loginContainer.classList.remove("active");
       console.error(error);
       alert("Error al registrar usuario");
    }
+
 });
+}
 
 // BANNER - CARGAR MÁS INFORMACIÓN DE LOS PROGRAMAS DE FORMACIÓN
 const loadMoreBtn = document.querySelector("#load-more");
@@ -173,7 +166,6 @@ if (loadMoreBtn) {
 const openLogin = document.getElementById("btn-login-register");
 const loginPanel = document.getElementById("login-panel");
 const loginOverlay = document.getElementById("login-overlay");
-
 const loginContainer = document.querySelector(".login-container");
 const registerBtn = document.getElementById("btn-register");
 const loginBtn = document.getElementById("btn-login");
@@ -182,58 +174,62 @@ const backLoginBtn = document.getElementById("btn-back-login");
 const recoverForm = document.getElementById("recover-form");
 
 const closeLoginPanel = () => {
-  loginPanel.classList.remove("active");
-  loginOverlay.classList.remove("active");
-  loginPanel.setAttribute("aria-hidden", "true");
-  loginContainer.classList.remove("active");
-  loginContainer.classList.remove("recover-active");
+  if (loginPanel) loginPanel.classList.remove("active");
+  if (loginOverlay) loginOverlay.classList.remove("active");
+  if (loginPanel) loginPanel.setAttribute("aria-hidden", "true");
+  if (loginContainer) loginContainer.classList.remove("active");
+  if (loginContainer) loginContainer.classList.remove("recover-active");
 };
 
-// Abrir panel
-openLogin.addEventListener("click", () => {
-  loginPanel.classList.add("active");
-  loginOverlay.classList.add("active");
-  loginPanel.setAttribute("aria-hidden", "false");
-});
-
-// Cerrar al hacer click fuera del panel
-loginOverlay.addEventListener("click", () => {
-  closeLoginPanel();
-});
-
-// Ir a registro
-registerBtn.addEventListener("click", () => {
-  loginContainer.classList.remove("recover-active");
-  loginContainer.classList.add("active");
-});
-
-// Volver a login
-loginBtn.addEventListener("click", () => {
-  loginContainer.classList.remove("active");
-  loginContainer.classList.remove("recover-active");
-});
-
-if (forgotPasswordBtn) {
-    forgotPasswordBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-        loginContainer.classList.remove("active");
-        loginContainer.classList.add("recover-active");
-    });
+if (openLogin) {
+  openLogin.addEventListener("click", () => {
+    loginPanel.classList.add("active");
+    loginOverlay.classList.add("active");
+    loginPanel.setAttribute("aria-hidden", "false");
+  });
 }
 
-backLoginBtn.addEventListener("click", (event) => {
-  event.preventDefault();
-  loginContainer.classList.remove("recover-active");
-});
+if (loginOverlay) {
+  loginOverlay.addEventListener("click", () => {
+    closeLoginPanel();
+  });
+}
 
-recoverForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const recoveryEmail = recoverForm.querySelector(
-    'input[name="recoveryEmail"]',
-  );
-  alert(
-    `Si el correo ${recoveryEmail.value.trim()} está registrado, recibirás un enlace de recuperación.`,
-  );
-  recoverForm.reset();
-  loginContainer.classList.remove("recover-active");
-});
+if (registerBtn) {
+  registerBtn.addEventListener("click", () => {
+    loginContainer.classList.remove("recover-active");
+    loginContainer.classList.add("active");
+  });
+}
+
+if (loginBtn) {
+  loginBtn.addEventListener("click", () => {
+    loginContainer.classList.remove("active");
+    loginContainer.classList.remove("recover-active");
+  });
+}
+
+if (forgotPasswordBtn) {
+  forgotPasswordBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    loginContainer.classList.remove("active");
+    loginContainer.classList.add("recover-active");
+  });
+}
+
+if (backLoginBtn) {
+  backLoginBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    loginContainer.classList.remove("recover-active");
+  });
+}
+
+if (recoverForm) {
+  recoverForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const recoveryEmail = recoverForm.querySelector('input[name="recoveryEmail"]');
+    alert(`Si el correo ${recoveryEmail.value.trim()} está registrado, recibirás un enlace de recuperación.`);
+    recoverForm.reset();
+    loginContainer.classList.remove("recover-active");
+  });
+}
