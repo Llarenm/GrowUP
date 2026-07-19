@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.LlarenMorales.growupmobile.ui.login.LoginFragment"
+        android:label="Login">
+        <action
+            android:id="@+id/action_login_to_menu"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.LlarenMorales.growupmobile.ui.menu.MenuFragment"
+        android:label="Menú">
+        <action
+            android:id="@+id/action_menu_to_personaList"
+            app:destination="@id/personaListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/personaListFragment"
+        android:name="com.LlarenMorales.growupmobile.ui.persona.PersonaListFragment"
+        android:label="Personas">
+        <action
+            android:id="@+id/action_personaList_to_personaForm"
+            app:destination="@id/personaFormFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/personaFormFragment"
+        android:name="com.LlarenMorales.growupmobile.ui.persona.PersonaFormFragment"
+        android:label="Formulario Persona">
+        <argument
+            android:name="personaId"
+            app:argType="integer"
+            android:defaultValue="-1" />
+    </fragment>
+</navigation>

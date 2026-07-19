@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="#F5F5F5">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Panel Principal"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#199448"
+        android:layout_marginBottom="20dp" />
+
+    <LinearLayout
+        android:id="@+id/cardGestionPersonas"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="18dp"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gestión de Personas"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#199448"/>
+
+        <Button
+            android:id="@+id/btnGestionPersonas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Entrar"
+            android:backgroundTint="#199448"
+            android:layout_marginTop="8dp"/>
+
+    </LinearLayout>
+</LinearLayout>
